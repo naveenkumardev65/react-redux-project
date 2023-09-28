@@ -12,7 +12,6 @@ function* mySaga() {
             // call making api calls.
             // dispatch and Put are same.
             const res = yield call(getUserDetails);
-            console.log('res', res)
             if(res) {
                 yield put(fetchUserDetailsSuccess(res));
             }

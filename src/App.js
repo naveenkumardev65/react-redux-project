@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchUserDetails } from './store/actions';
-import axios from 'axios';
+
 import {
   selectCounter,
   selectLoading,
@@ -11,7 +11,7 @@ import {
 } from './store/selectors'
 
 function App(props) {
-  const { count, dispatch, loading, records, error, success, } = props;
+  const { dispatch, loading, records, error, success, } = props;
 
 
   // Perform api calls before the component mount or inject the DOM.

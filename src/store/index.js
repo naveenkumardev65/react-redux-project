@@ -18,6 +18,6 @@ sagaMiddleware.run(mySaga)
 
 export default store;
 
-
+// Watch the actions & store values
 store.subscribe(() => console.log('store', store.getState()))
 
