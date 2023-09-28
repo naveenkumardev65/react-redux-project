@@ -25,7 +25,7 @@ function decrement(val) {
     }
 }
 
-
+// Reducer
 const appReducer = (state=initialState, action) => {
     switch(action.type) {
         case INCREMENT: 
@@ -37,7 +37,7 @@ const appReducer = (state=initialState, action) => {
     }
 }
 
-
+// Store Configuration / Store Initialize
  const store = createStore(appReducer);
 
  export default store;

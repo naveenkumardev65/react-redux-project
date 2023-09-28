@@ -14,16 +14,25 @@ function App(props) {
 }
 
 
+
+// Selector
+function getCounter(state) {
+  return state && state?.count || 0
+}
+
+// State props
 const mapStateToProps = (state) => {
   return {
-    count: state && state?.count || 0
+    count: getCounter(state)
   }
 }
 
+// Dispatcher
 const mapStateToDispatch = (dispatch) => {
   return {
     dispatch
   }
 }
 
+// connecting store into App component.
 export default connect(mapStateToProps, mapStateToDispatch)(App);
