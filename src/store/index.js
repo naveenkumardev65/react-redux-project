@@ -1,48 +1,23 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import appReducer from './reducer';
+import createSagaMiddleware from 'redux-saga';
+import mySaga from './saga'
 
 
-// Constants
-const INCREMENT = 'INCREMENT'
-const DECREMENT = 'DECREMENT'
-
-// initial store value
-const initialState = {
-    count: 0
-}
-
-//actions
-function increment(value) {
-    return {
-        type: INCREMENT,
-        value
-    }
-}
-
-function decrement(val) {
-    return {
-        type: DECREMENT,
-        val
-    }
-}
-
-// Reducer
-const appReducer = (state=initialState, action) => {
-    switch(action.type) {
-        case INCREMENT: 
-            return { ...state, count: state.count + action.value};
-        case DECREMENT: 
-            return { ...state, count: state.count - action.val };
-        default:
-            return state;
-    }
-}
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
+const enhancers = [applyMiddleware(...middlewares)];
 
 // Store Configuration / Store Initialize
- const store = createStore(appReducer);
+const store = createStore(appReducer, compose(...enhancers));
 
- export default store;
 
- export {
-    increment,
-    decrement
- }
+// then run the saga // root saga file
+sagaMiddleware.run(mySaga)
+
+export default store;
+
+
+store.subscribe(() => console.log('store', store.getState()))
+
