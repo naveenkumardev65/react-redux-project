@@ -1,5 +1,5 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects'
-import { getUserDetails } from './remotes';
+import { getUserDetails } from './rometes';
 import { FETCH_USER_DETAILS } from './constants'
 import { fetchUserDetailsSuccess, fetchUserDetailsError } from './actions'
 
