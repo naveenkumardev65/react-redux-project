@@ -1,33 +1,21 @@
 import React from 'react';
-import Posts from './Posts';
 import {
-  createBrowserRouter,
-  RouterProvider,
+  Routes,
+  Route,
+  Navigate
 } from "react-router-dom";
-import PostDetails from './PostDetails';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Posts />,
-    // children: [
-    //   {
-    //     path: '/post',
-    //     element: <PostDetails />
-    //   }
-    // ]
-  },
-  {
-    path: '/post/:id',
-    element: <PostDetails />
-  }
-]);
+import Page1 from './Page1';
+import Page2 from './Page2';
 
 function App(props) {
 
   return (
     <div>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path='/page1' element={<Page1 />}/>
+        <Route path='/page2' element={<Page2 />}/>
+        <Route path='/' exact element={<Navigate to="/page1" replace />}/>
+      </Routes>
     </div>
   )
 }
